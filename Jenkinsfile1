@@ -1,23 +1,21 @@
 pipeline {
- agent any
+  agent { label 'slave1' }
 
 tools {
-    jdk 'Java'
-    maven 'Maven'
+  jdk 'Java'
+  maven 'Maven'
 }
+
 stages {
- stage ('Git clone') {
-    steps{
-         git 'https://github.com/chinni4321/MavenBuild.git'
-    }
- }
-
- stage ('Maven Build') {
-    steps{
-         sh 'mvn clean package'
-    }
- }
-
-}
-
+  stage ('Git checkout') {
+    steps {
+        git branch: 'main', url: 'https://github.com/chinni4321/MavenBuild.git'
+       }
+     }
+   stage ('Maven Build') {
+    steps {
+        sh 'mvn clean package'
+       }
+     }
+   }
 }
