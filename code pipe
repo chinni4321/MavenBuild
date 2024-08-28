@@ -1,0 +1,21 @@
+pipeline {
+  agent { label 'master' }
+
+tools {
+  jdk 'Java'
+  maven 'Maven'
+}
+
+stages {
+  stage ('Git checkout') {
+    steps {
+        git branch: 'main', url: 'https://github.com/raji150882/MavenBuild.git'
+       }
+     }
+   stage ('Maven Build') {
+    steps {
+        sh 'mvn clean package'
+       }
+     }
+   }
+}
