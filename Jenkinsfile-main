@@ -9,7 +9,7 @@ tools {
 stages {
   stage ('Git checkout') {
     steps {
-        git branch: 'main', url: 'https://github.com/chinni4321/MavenBuild.git'
+        git branch: 'master', url: 'https://github.com/chinni4321/MavenBuild.git'
        }
      }
    stage ('Maven Build') {
